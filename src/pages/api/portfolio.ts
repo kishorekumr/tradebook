@@ -28,9 +28,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     //   }
     //   break;
     // }
-    default: {
-      res.status(405).end();
-      break;
-    }
+    // default: {
+    //   res.status(405).end();
+    //   break;
+    // }
   }
 };
