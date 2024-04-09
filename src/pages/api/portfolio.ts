@@ -9,25 +9,25 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         const { body } = req;
         const { symbol, exchange, type } = JSON.parse(body);
-        await await prisma.equity.update({
-          where: {
-            symbol_exchange: {
-              symbol,
-              exchange,
-            },
-          },
-          data: { recorded: type === `buy` },
-        });
-        res
-          .status(200)
-          .send(`Portfolio ${symbol} in ${exchange} updated to database`);
-      } catch (err) {
-        res.status(500).send(`Error saving to database`);
-      } finally {
-        prisma.$disconnect();
-      }
-      break;
-    }
+    //     await await prisma.equity.update({
+    //       where: {
+    //         symbol_exchange: {
+    //           symbol,
+    //           exchange,
+    //         },
+    //       },
+    //       data: { recorded: type === `buy` },
+    //     });
+    //     res
+    //       .status(200)
+    //       .send(`Portfolio ${symbol} in ${exchange} updated to database`);
+    //   } catch (err) {
+    //     res.status(500).send(`Error saving to database`);
+    //   } finally {
+    //     prisma.$disconnect();
+    //   }
+    //   break;
+    // }
     default: {
       res.status(405).end();
       break;
