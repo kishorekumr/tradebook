@@ -8,11 +8,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     query: { exchange, period },
   } = req;
-  const summary = await prisma.$queryRaw<Summary[]>(
-    `EXEC [dbo].[usp_PositionSummary] 
-      @period = ${period},
-      @exchange = '${exchange}'`,
-  );
-  prisma.$disconnect();
-  res.status(200).json(summary);
+  // const summary = await prisma.$queryRaw<Summary[]>(
+  //   `EXEC [dbo].[usp_PositionSummary] 
+  //     @period = ${period},
+  //     @exchange = '${exchange}'`,
+  // );
+  // prisma.$disconnect();
+  // res.status(200).json(summary);
 };
