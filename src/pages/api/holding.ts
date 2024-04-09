@@ -12,36 +12,36 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         query: { exchange, period, type },
       } = req;
       switch (type) {
-        case `d`: {
-          try {
-            const summary = await prisma.$queryRaw<Portfolio[]>(
-              `EXEC [dbo].[usp_Holding] 
-                  @period = ${period},
-                  @exchange = '${exchange}'`,
-            );
-            res.status(200).json(summary);
-          } catch (error) {
-            res.status(500).json({ message: `Error loading data` });
-          } finally {
-            prisma.$disconnect();
-          }
-          break;
-        }
-        case `s`: {
-          try {
-            const summary = await prisma.$queryRaw<Summary[]>(
-              `EXEC [dbo].[usp_HoldingSummary] 
-                @period = ${period},
-                @exchange = '${exchange}'`,
-            );
-            res.status(200).json(summary);
-          } catch (error) {
-            res.status(500).json({ message: `Error loading data` });
-          } finally {
-            prisma.$disconnect();
-          }
-          break;
-        }
+        // case `d`: {
+        //   try {
+        //     const summary = await prisma.$queryRaw<Portfolio[]>(
+        //       `EXEC [dbo].[usp_Holding] 
+        //           @period = ${period},
+        //           @exchange = '${exchange}'`,
+        //     );
+        //     res.status(200).json(summary);
+        //   } catch (error) {
+        //     res.status(500).json({ message: `Error loading data` });
+        //   } finally {
+        //     prisma.$disconnect();
+        //   }
+        //   break;
+        // }
+        // case `s`: {
+        //   try {
+        //     const summary = await prisma.$queryRaw<Summary[]>(
+        //       `EXEC [dbo].[usp_HoldingSummary] 
+        //         @period = ${period},
+        //         @exchange = '${exchange}'`,
+        //     );
+        //     res.status(200).json(summary);
+        //   } catch (error) {
+        //     res.status(500).json({ message: `Error loading data` });
+        //   } finally {
+        //     prisma.$disconnect();
+        //   }
+        //   break;
+        // }
         default: {
           break;
         }
